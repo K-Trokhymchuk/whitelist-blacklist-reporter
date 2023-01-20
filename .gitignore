@@ -1,0 +1,5 @@
+venv/*
+conf_files/
+reports/
+tests/
+__pycache__/
