@@ -1,0 +1,96 @@
+{
+    "Potentially Liable": {
+        "1" : "Drug Abuse",
+        "2" : "Occult",
+        "3" : "Hacking",
+        "4" : "Illegal or Unethical",
+        "5" : "Racism and Hate",
+        "6" : "Violence",
+        "57" : "Marijuana",
+        "58" : "Folklore",
+        "59" : "Proxy Avoidance",
+        "60" : "Web Translation",
+        "61" : "Phishing",
+        "62" : "Plagiarism",
+        "83" : "Child Abuse"
+    },
+    "Controversial": {
+        "7" : "Abortion",
+        "8" : "Adult Materials",
+        "9" : "Advocacy Organizations",
+        "11" : "Gambling",
+        "12" : "Extremist Groups",
+        "13" : "Nudity and Risque",
+        "14" : "Pornography",
+        "15" : "Tasteless",
+        "16" : "Weapons",
+        "63" : "Sex Education",
+        "64" : "Alcohol",
+        "65" : "Tobacco",
+        "66" : "Lingerie and Swimsuit",
+        "67" : "Sports Hunting and War Games"
+    },
+    "Potentially Non-productive": {
+        "17": "Advertising",
+        "18": "Brokerage and Trading",
+        "19": "Freeware and Software Downloads",
+        "20": "Games",
+        "23": "Web-based Email",
+        "68": "Web Chat",
+        "69": "Instant Messaging",
+        "70": "Newsgroups and Message Boards",
+        "71": "Digital Postcards"
+    },
+    "Potentially Bandwidth Consuming": {
+        "24": "File Sharing and Storage",
+        "25": "Streaming Media",
+        "72": "Peer-to-peer File Sharing",
+        "75": "Internet Radio and TV",
+        "76": "Internet Telephony"
+    },
+    "Potential Security Violating": {
+        "26": "Spyware and Malware"
+    },
+    "General Interest": {
+        "28": "Arts and Entertainment",
+        "29": "Culture",
+        "30": "Education",
+        "31": "Finance and Banking",
+        "32": "Homosexuality",
+        "33": "Health and Wellness",
+        "34": "Job Search",
+        "35": "Medicine",
+        "36": "News and Media",
+        "37": "Social Networking",
+        "38": "Political Organizations",
+        "39": "Reference",
+        "40": "Religion",
+        "41": "Search Engines and Portals",
+        "42": "Shopping and Auction",
+        "43": "General Organizations",
+        "44": "Society and Lifestyles",
+        "46": "Sports",
+        "47": "Travel",
+        "48": "Personal Vehicles",
+        "77": "Child Education",
+        "78": "Real Estate",
+        "79": "Restaurant and Dining",
+        "80": "Personal Websites and Blogs"
+    },
+    "Business Oriented": {
+        "49": "Business",
+        "50": "Information and Computer Security",
+        "51": "Government and Legal Organizations",
+        "52": "Information Technology",
+        "53": "Armed Forces",
+        "84": "Web-based Applications"
+    },
+    "Others": {
+        "54": "Dynamic Content",
+        "55": "Miscellaneous",
+        "56": "Web Hosting",
+        "81": "Secure Websites",
+        "82": "Content Servers",
+        "85": "Domain Parking"
+    }
+}
