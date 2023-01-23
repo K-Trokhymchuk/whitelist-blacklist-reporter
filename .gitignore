@@ -3,3 +3,5 @@ conf_files/
 reports/
 tests/
 __pycache__/
+!fortigate-cf-cats.json
+*.json
