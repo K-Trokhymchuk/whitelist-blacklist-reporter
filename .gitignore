@@ -1,9 +1,22 @@
-venv/*
-conf_files/
-reports/
-tests/
+# Python
 __pycache__/
+
+# virtual environment
+venv/
+
+# ignore subitems, but keep directories app needs present
+conf_files/*
+!conf_files
+reports/*
+!reports
+
+# tests
+tests/
+
+# Miscellaneous files
 !fortigate-cf-cats.json
 *.json
+
+# PyInstaller
 build/
 dist/
