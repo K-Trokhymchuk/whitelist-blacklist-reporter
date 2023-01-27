@@ -1,26 +1,57 @@
-
+import json
+import env
 class ReportHelper():
     def __init__(self, dconfig: dict):
         self._dconfig = dconfig
+        with open(env.CONTENT_FILTER_DEFS_PATH) as cfFile:
+            self._cfCats = json.load(cfFile)
 
     # extracts 
     def extract_custom_webfilter(self):
-        id_mapping = dict()
-        local_cats = self._dconfig["webfilter"]["ftgd-local-cat"]
-        for cat_name in local_cats:
+        idMapping = dict()
+        localCats = self._dconfig["webfilter"]["ftgd-local-cat"]
+        for catName in localCats:
             # reversed mappings so we can look up category name by id
-            id_mapping[local_cats[cat_name]["id"]] = cat_name
+            idMapping[localCats[catName]["id"]] = catName
         
-        local_ratings = self._dconfig["webfilter"]["ftgd-local-rating"]
-        catted_ratings = dict()
-        for website in local_ratings:
-            rating_id = id_mapping[local_ratings[website]["rating"]]
-            if catted_ratings.get(rating_id) == None: 
-                catted_ratings[rating_id] = list()
+        localRatings = self._dconfig["webfilter"]["ftgd-local-rating"]
+        cattedRatings = dict()
+        for website in localRatings:
+            ratingId = idMapping[localRatings[website]["rating"]]
+            if cattedRatings.get(ratingId) == None: 
+                cattedRatings[ratingId] = list()
             
-            catted_ratings[rating_id].append(website)
+            cattedRatings[ratingId].append(website)
 
-        return catted_ratings
+        return cattedRatings
 
     def extract_content_filter_settings(self):
-        pass
+        
+
+        profiles = self._dconfig["webfilter"]["profile"]
+        reports = dict()
+
+        for profile in profiles:
+            filters = profiles[profile]["ftgd-wf"]["filters"]
+            
+            report = dict()
+            for cat in self._cfCats:
+                report[cat] = dict()
+            report["UNDEFINED"] = dict()
+
+            for filter in filters:
+                entryDetails = filters[filter]
+                entryCat = entryDetails.get("category")
+                if entryCat != None:
+                    mapping = self._get_cat_mapping(entryCat)
+                    report[mapping[0]][mapping[1]] = entryDetails.get("action")
+                reports[profile] = report
+        
+        return reports
+
+    def _get_cat_mapping(self, entryCatId):
+        for cat in self._cfCats:
+            catMapping = self._cfCats[cat].get(entryCatId)
+            if catMapping != None:
+                return (cat, catMapping)
+        return ("UNDEFINED", f"{entryCatId} NOT DEFINED")

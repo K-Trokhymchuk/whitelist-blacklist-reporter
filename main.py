@@ -1,6 +1,6 @@
 # system packages
 import json, os
-from pprint import pformat
+from pprint import pformat, pprint
 
 # installed packages
 import pandas as pd
@@ -20,9 +20,19 @@ def generate_whitelist_blacklist(filename, rhelper):
     df = pd.DataFrame(dict([ (k, pd.Series(v)) for k,v in rhelper.extract_custom_webfilter().items() ]))
     df.to_excel(os.path.join(env.REPORT_FOLDER, '.'.join([filename.strip(".conf") + "_whitelist-blacklist", "xlsx"])))
 
+def _prepare_category_report(jsonReport):
+    flattenedReport = list()
+    for category in jsonReport:
+        for subcategory in jsonReport[category]:
+            flattenedReport.append((category, subcategory, jsonReport[category][subcategory]))
+    return flattenedReport
+
 def generate_category_report(filename, helper):
-    df = pd.DataFrame(dict([ (k, pd.Series(v)) for k,v in rhelper.extract_custom_webfilter().items() ]))
-    df.to_excel(os.path.join(env.REPORT_FOLDER, '.'.join([filename.strip(".conf") + "_content-filter-settings", "xlsx"])))
+    reports = rhelper.extract_content_filter_settings()
+    for report in reports:
+        pprint(reports[report])
+        df = pd.DataFrame(_prepare_category_report(reports[report]))
+        df.to_excel(os.path.join(env.REPORT_FOLDER, '.'.join([filename.strip(".conf") + f"_content-filter-settings_{report}", "xlsx"])))
     pass
 
 if (__name__ == "__main__"):

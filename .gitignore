@@ -5,3 +5,5 @@ tests/
 __pycache__/
 !fortigate-cf-cats.json
 *.json
+build/
+dist/
